@@ -13,3 +13,16 @@ tag, release).
 * **setup.job** - Job definition file, written in the [Job DSL](https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin).
     This is the "Seed Job" responsible for installing the other jobs in Jenkins.
 * **<TASK>.sh** - The shell script responsible for performing the work needed for a specific task.
+
+## Installing the seed job.
+1. Create a new FreeStyle job.
+2. In the General section:
+  * Specify a project name.
+  * Specify the GitHub project (e.g. [https://github.com/NCIOCPL/build-skeleton](https://github.com/NCIOCPL/build-skeleton)).
+3. In the Build section:
+  1. Click the "Add build step" button.
+  2. Select "Process Job DSLs."
+  3. Verify that "Look on Filesystem" is selected.
+  4. For "DSL Scripts," specify "setup.job" (the actual script file will be downloaded automatically)
+4. Click the "Save" button.
+
