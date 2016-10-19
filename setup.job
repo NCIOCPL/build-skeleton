@@ -9,31 +9,45 @@ def folderName  = 'Project-Folder'
 def devBuild = 'dev-build'
 def releaseBuild = 'release-build'
 def releaseToStage = 'release-to-stage'
-def releaseToProd = 'release-to-prod' 
+def releaseToProd = 'release-to-prod'
+
+def sourceRepository = 'NCIOCPL/build-skeleton' 
 
 # Create the folder where all the jobs will be created.
 folder(folderName)
 
 
 job("${folderName}/${devBuild}") {
+    scm {
+        github(sourceRepository)
+    }
     steps {
         shell("./${devBuild}")
     }
 }
 
 job("${folderName}/${releaseBuild}") {
+    scm {
+        github(sourceRepository)
+    }
     steps {
         shell("./${releaseBuild}")
     }
 }
 
 job("${folderName}/${releaseToStage}") {
+    scm {
+        github(sourceRepository)
+    }
     steps {
         shell("./${releaseToStage}")
     }
 }
 
 job("${folderName}/${releaseToProd}") {
+    scm {
+        github(sourceRepository)
+    }
     steps {
         shell("./${releaseToProd}")
     }
