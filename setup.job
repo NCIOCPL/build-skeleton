@@ -1,0 +1,40 @@
+# Rather than store the scripts for every project in a single location, we instead create
+# a Jenkins folder for each project (ideally, this will be the name of the project).
+# Important: Avoid spaces in the folder name. This becomes part of the path name for the build
+# and some tools (e.g. the dotnet CLI) have problems with spaces in path names.
+
+
+def folderName  = 'Project-Folder'
+
+def devBuild = 'dev-build'
+def releaseBuild = 'release-build'
+def releaseToStage = 'release-to-stage'
+def releaseToProd = 'release-to-prod' 
+
+# Create the folder where all the jobs will be created.
+folder(folderName)
+
+
+job("${folderName}/${devBuild}") {
+    steps {
+        shell("./${devBuild}")
+    }
+}
+
+job("${folderName}/${releaseBuild}") {
+    steps {
+        shell("./${releaseBuild}")
+    }
+}
+
+job("${folderName}/${releaseToStage}") {
+    steps {
+        shell("./${releaseToStage}")
+    }
+}
+
+job("${folderName}/${releaseToProd}") {
+    steps {
+        shell("./${releaseToProd}")
+    }
+}
