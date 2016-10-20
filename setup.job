@@ -23,7 +23,7 @@ job("${folderName}/${devBuild}") {
         github(sourceRepository)
     }
     steps {
-        shell("./${devBuild}")
+        shell("./${devBuild}.sh")
     }
 }
 
@@ -32,7 +32,7 @@ job("${folderName}/${releaseBuild}") {
         github(sourceRepository)
     }
     steps {
-        shell("./${releaseBuild}")
+        shell("./${releaseBuild}.sh")
     }
 }
 
@@ -41,7 +41,7 @@ job("${folderName}/${releaseToStage}") {
         github(sourceRepository)
     }
     steps {
-        shell("./${releaseToStage}")
+        shell("./${releaseToStage}.sh")
     }
 }
 
@@ -50,6 +50,6 @@ job("${folderName}/${releaseToProd}") {
         github(sourceRepository)
     }
     steps {
-        shell("./${releaseToProd}")
+        shell("./${releaseToProd}.sh")
     }
 }
