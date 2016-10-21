@@ -3,8 +3,13 @@
 echo Creating Release Build.
 
 # Create temporary location for publishing output
-TMPFILE=`mktemp -d` || exit 1
+TMPDIR=`mktemp -d` || exit 1
 
-# Build for publishing
+# Publish to temporary location.
 dotnet restore
-dotnet publish -o $TMPFILE
+dotnet publish -o $TMPDIR
+
+# Create archive for uploading to GitHub
+echo "Creating release archive"
+zip -r project-release.zip $TMPDIR
+
