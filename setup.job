@@ -32,14 +32,14 @@ job("${folderName}/${releaseBuild}") {
     // It ends up being passed to the shell script. 
     wrappers {
         credentialsBinding {
-            string('RELEASE_TOKEN', 'NCIOCPL-Github')
+            string('RELEASE_TOKEN', 'NCIOCPL-GitHub')
         }
     }
     scm {
         github(sourceRepository)
     }
     steps {
-        shell('./${releaseBuild}.sh $RELEASE_TOKEN')
+        shell("./${releaseBuild}.sh" + ' $RELEASE_TOKEN')
     }
 }
 
