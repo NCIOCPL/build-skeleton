@@ -28,19 +28,18 @@ job("${folderName}/${devBuild}") {
 }
 
 job("${folderName}/${releaseBuild}") {
-    parameters {
-        credentialsParam('DEPLOY_KEY') {
-            type('com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey')
-            required()
-            defaultValue('ssh-key-staging')
-            description('SSH Key for deploying build artifacts')
+    // Set up GitHub security token as a variable in the job.
+    // It ends up being passed to the shell script. 
+    wrappers {
+        credentialsBinding {
+            string('RELEASE_TOKEN', 'NCIOCPL-Github')
         }
     }
     scm {
         github(sourceRepository)
     }
     steps {
-        shell("./${releaseBuild}.sh")
+        shell('./${releaseBuild}.sh $RELEASE_TOKEN')
     }
 }
 
