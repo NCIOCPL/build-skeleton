@@ -23,10 +23,7 @@ tag, release).
 3. In the "Source Code Management" section:
   1. Select "Git"
   2. Specify the GitHub project (e.g. [https://github.com/NCIOCPL/build-skeleton](https://github.com/NCIOCPL/build-skeleton)).
-  3. Select the set of GitHub credentials to use.
-  4. Click the "Advanced" button
-  5. For "Name" enter "origin"
-  6. Verify the value for "Branch Specifier"
+  3. Verify the value for "Branch Specifier"
 3. In the Build section:
   1. Click the "Add build step" button.
   2. Select "Process Job DSLs."
