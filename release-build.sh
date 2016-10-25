@@ -3,6 +3,12 @@
 #   $1 - GitHub userid for creating a release and uploading artifacts.
 #   $2 - GitHub token for creating a release and uploading artifacts.
 
+# Required Enviroment Variables
+# GITHUB_USER - GitHub userid used for creating releases.
+# GITHUB_REPO - The repository where the build should be created.
+# VERSION_NUMBER - Semantic version number.
+# PROJECT_NAME - Project name
+
 echo Creating Release Build.
 
 # Create temporary location for publishing output
@@ -27,10 +33,10 @@ zip -r project-release.zip .
 cd $PROJECT_DIR
 
 echo "Deleting release from github before creating new one"
-github-release delete --user ${GITHUB_USER} --repo ${GITHUB_REPO} --tag ${VERSION_NAME}
+github-release delete --user ${GITHUB_USER} --repo ${GITHUB_REPO} --tag ${VERSION_NUMBER}
 
 echo "Creating a new release in github"
-github-release release --user ${GITHUB_USER} --repo ${GITHUB_REPO} --tag ${VERSION_NAME} --name "${VERSION_NAME}"
+github-release release --user ${GITHUB_USER} --repo ${GITHUB_REPO} --tag ${VERSION_NUMBER} --name "${VERSION_NUMBER}"
 
 echo "Uploading the artifacts into github"
-github-release upload --user ${GITHUB_USER} --repo ${GITHUB_REPO} --tag ${VERSION_NAME} --name "${PROJECT_NAME}-${VERSION_NAME}.zip" --file artifacts.zip
+github-release upload --user ${GITHUB_USER} --repo ${GITHUB_REPO} --tag ${VERSION_NUMBER} --name "${PROJECT_NAME}-${VERSION_NUMBER}.zip" --file $TMPDIR/project-release.zip

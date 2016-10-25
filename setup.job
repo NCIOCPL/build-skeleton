@@ -51,7 +51,7 @@ job("${folderName}/${releaseBuild}") {
             envs(
                 GH_ORGANIZATION_NAME : GH_ORGANIZATION_NAME,
                 GH_REPO_NAME : GH_REPO_NAME,
-                VERSION : VERSION_NUMBER,
+                VERSION_NUMBER : VERSION_NUMBER,
                 PROJECT_NAME : PROJECT_NAME
             )
         }
