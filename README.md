@@ -31,7 +31,7 @@ tag, release).
   4. For "DSL Scripts," specify "setup.job" (the actual script file will be downloaded automatically)
 4. Click the "Save" button.
 
-# GitHub Credentials
+## GitHub Credentials
 The jobs which build release executables and upload them to Github require an access token. This is a string which
 is used in place of a password and should be treated as one.
 1. Create an access token.
