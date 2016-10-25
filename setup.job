@@ -5,14 +5,26 @@
   and some tools (e.g. the dotnet CLI) have problems with spaces in path names.
 */
 
+// Folder where the jbos will be placed.
 def folderName  = 'Project-Folder'
 
+def GH_ORGANIZATION_NAME = 'NCIOCPL'   // GitHub Organization name (as used in the URL/userid).
+def GH_REPO_NAME = 'build-skeleton'    // The project's repository name (as used in the URL).
+def GH_USER_KEY = 'NCIOCPL-GitHub'    // Jenkins ID of the credential string containing the GitHub userid which creates releases.
+def GH_USER_TOKEN_KEY = 'NCIOCPL-GitHub-Token'    // Jenkins ID of the credential string containing the GitHub access token for creating releases.
+
+def VERSION_NUMBER = '0.1.0'            // Project version number, following semantic versioning.
+def PROJECT_NAME = 'Build-Skeleton'     // Project name.
+
+def sourceRepository = "$ORGANIZATION_NAME/$REPO_NAME"
+
+
+// Name of the jobs to be created. Also serves as the basis of the jobs' individual
+// implementation scripts.
 def devBuild = 'dev-build'
 def releaseBuild = 'release-build'
 def releaseToStage = 'release-to-stage'
 def releaseToProd = 'release-to-prod'
-
-def sourceRepository = 'NCIOCPL/build-skeleton' 
 
 // Create the folder where all the jobs will be created.
 folder(folderName)
@@ -32,14 +44,23 @@ job("${folderName}/${releaseBuild}") {
     // It ends up being passed to the shell script. 
     wrappers {
         credentialsBinding {
-            string('RELEASE_TOKEN', 'NCIOCPL-GitHub')
+            string('RELEASE_USER', GH_USER_KEY)
+            string('RELEASE_TOKEN', GH_USER_TOKEN_KEY)
+        }
+        environmentVariables {
+            envs(
+                GH_ORGANIZATION_NAME : GH_ORGANIZATION_NAME,
+                GH_REPO_NAME : GH_REPO_NAME,
+                VERSION : VERSION_NUMBER,
+                PROJECT_NAME : PROJECT_NAME
+            )
         }
     }
     scm {
         github(sourceRepository)
     }
     steps {
-        shell("./${releaseBuild}.sh" + ' $RELEASE_TOKEN')
+        shell("./${releaseBuild}.sh" + ' $RELEASE_USER $RELEASE_TOKEN')
     }
 }
 

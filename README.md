@@ -44,7 +44,7 @@ is used in place of a password and should be treated as one.
     6. Select the "repo" scope.
     7. At the bottom of the page, click the "Generate token" button.
     8. Copy the token value. **This is the only time the token will *ever* be visible in GitHub.**
-2. Install the token in Jenkins.
+2. Install GitHub credentials in Jenkins.
     1. Login to the Jenkins server.
     2. On the main page, click "Credentials."
     3. Click the "global" store (the linked word in any of the displayed lists).
@@ -54,4 +54,11 @@ is used in place of a password and should be treated as one.
         * **Scope:** Leave this as "Global"
         * **Secret:** The token value generated on GitHub.
         * **ID:** "NCIOCPL-Github" (this is the name for identifying the key).
+        * **Description** Description of the key (e.g. "GitHub userid for creating releases"). 
+    6. Click "Add Credentials" on the menu again
+    7. Fill out the form:
+        * **Kind:** select "Secret text"
+        * **Scope:** Leave this as "Global"
+        * **Secret:** The token value generated on GitHub.
+        * **ID:** "NCIOCPL-Github-Token" (this is the name for identifying the key).
         * **Description** Description of the key (e.g. "GitHub token for creating releases"). 
