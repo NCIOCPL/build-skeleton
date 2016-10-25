@@ -44,7 +44,6 @@ job("${folderName}/${releaseBuild}") {
     // It ends up being passed to the shell script. 
     wrappers {
         credentialsBinding {
-            string('RELEASE_USER', GH_USER_KEY)
             string('RELEASE_TOKEN', GH_USER_TOKEN_KEY)
         }
         environmentVariables {
@@ -60,7 +59,7 @@ job("${folderName}/${releaseBuild}") {
         github(sourceRepository)
     }
     steps {
-        shell("./${releaseBuild}.sh" + ' $RELEASE_USER $RELEASE_TOKEN')
+        shell("./${releaseBuild}.sh" + ' $RELEASE_TOKEN')
     }
 }
 
