@@ -34,6 +34,7 @@ tag, release).
 ## GitHub Credentials
 The jobs which build release executables and upload them to Github require an access token. This is a string which
 is used in place of a password and should be treated as one.
+
 1. Create an access token.
     1. Login to GitHub as the userid which will create the release.
     2. In the top *right* corner of any GitHub page, click the profile photo, then click Settings.
