@@ -6,6 +6,8 @@ tag, release).
 * [Jenkins](https://jenkins.io/)
 * [Job DSL Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin)
 * [Git Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Git+Plugin)
+* [Credentials Binding Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Credentials+Binding+Plugin) (Included w/ Jenkins'
+    recommended plugins)
 
 (Additional plugins will likely also be required, depending on what's to be built.)
 
