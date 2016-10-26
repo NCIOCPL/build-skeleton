@@ -4,7 +4,7 @@
 
 # Required Enviroment Variables
 # GH_ORGANIZATION_NAME - The GitHub organization (or username) the repository belongs to. 
-# GITHUB_REPO - The repository where the build should be created.
+# GH_REPO_NAME - The repository where the build should be created.
 # VERSION_NUMBER - Semantic version number.
 # PROJECT_NAME - Project name
 
@@ -31,10 +31,10 @@ zip -r project-release.zip .
 cd $PROJECT_DIR
 
 echo "Deleting release from github before creating new one"
-github-release delete --user ${GH_ORGANIZATION_NAME} --repo ${GITHUB_REPO} --tag ${VERSION_NUMBER}
+github-release delete --user ${GH_ORGANIZATION_NAME} --repo ${GH_REPO_NAME} --tag ${VERSION_NUMBER}
 
 echo "Creating a new release in github"
-github-release release --user ${GH_ORGANIZATION_NAME} --repo ${GITHUB_REPO} --tag ${VERSION_NUMBER} --name "${VERSION_NUMBER}"
+github-release release --user ${GH_ORGANIZATION_NAME} --repo ${GH_REPO_NAME} --tag ${VERSION_NUMBER} --name "${VERSION_NUMBER}"
 
 echo "Uploading the artifacts into github"
-github-release upload --user ${GH_ORGANIZATION_NAME} --repo ${GITHUB_REPO} --tag ${VERSION_NUMBER} --name "${PROJECT_NAME}-${VERSION_NUMBER}.zip" --file $TMPDIR/project-release.zip
+github-release upload --user ${GH_ORGANIZATION_NAME} --repo ${GH_REPO_NAME} --tag ${VERSION_NUMBER} --name "${PROJECT_NAME}-${VERSION_NUMBER}.zip" --file $TMPDIR/project-release.zip
