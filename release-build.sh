@@ -30,9 +30,6 @@ cd $TMPDIR
 zip -r project-release.zip .
 cd $PROJECT_DIR
 
-echo "Deleting release from github before creating new one"
-github-release delete --user ${GH_ORGANIZATION_NAME} --repo ${GH_REPO_NAME} --tag ${VERSION_NUMBER}
-
 echo "Creating a new release in github"
 github-release release --user ${GH_ORGANIZATION_NAME} --repo ${GH_REPO_NAME} --tag ${VERSION_NUMBER} --name "${VERSION_NUMBER}"
 
