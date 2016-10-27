@@ -13,7 +13,7 @@ def GH_REPO_NAME = 'build-skeleton'    // The project's repository name (as used
 def GH_USER_KEY = 'NCIOCPL-GitHub'    // Jenkins ID of the credential string containing the GitHub userid which creates releases.
 def GH_USER_TOKEN_KEY = 'NCIOCPL-GitHub-Token'    // Jenkins ID of the credential string containing the GitHub access token for creating releases.
 
-def VERSION_NUMBER = '0.1.0'            // Project version number, following semantic versioning.
+def VERSION_NUMBER = '0.1.3'            // Project version number, following semantic versioning.
 def PROJECT_NAME = 'Build-Skeleton'     // Project name.
 
 def sourceRepository = "$GH_ORGANIZATION_NAME/$GH_REPO_NAME"
