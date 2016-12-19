@@ -9,6 +9,7 @@ tag, release).
 * [Credentials Binding Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Credentials+Binding+Plugin) (Included w/ Jenkins'
     recommended plugins)
 * [EnvInject Plugin](https://wiki.jenkins-ci.org/display/JENKINS/EnvInject+Plugin)
+* [GitHub Release Tool](https://github.com/aktau/github-release/)
 
 (Additional plugins will likely also be required, depending on what's to be built.)
 
